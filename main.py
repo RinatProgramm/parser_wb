@@ -1,13 +1,11 @@
 import datetime
-
-import schedule
 import requests
 import json
 import pandas as pd
 from retry import retry
 # pip install openpyxl
 
-i = 1
+
 
 def get_catalogs_wb() -> dict:
     """получаем полный каталог Wildberries"""
@@ -132,19 +130,6 @@ def parser(url: str, low_price: int = 1, top_price: int = 1000000, discount: int
         print('Ошибка! Возможно не верно указан раздел. Удалите все доп фильтры с ссылки')
     except PermissionError:
         print('Ошибка! Вы забыли закрыть созданный ранее excel файл. Закройте и повторите попытку')
-
-
-"""def job():
-    global i
-    print(f"Запустился {i} раз")
-    i += 1
-    print(datetime.datetime.now())
-
-
-schedule.every(10).seconds.do(job)
-
-while True:
-    schedule.run_pending()"""
 
 
 if __name__ == '__main__':
